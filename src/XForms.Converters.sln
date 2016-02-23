@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Visual Studio 2012
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XForms.Converters", "XForms.Converters\XForms.Converters.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XForms.Converters.Tests", "XForms.Converters.Tests\XForms.Converters.Tests.csproj", "{E443C2D3-4AA6-4092-B6C6-9D13FD03673A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{67F9D3A8-F71E-4428-913F-C37AE82CDB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67F9D3A8-F71E-4428-913F-C37AE82CDB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67F9D3A8-F71E-4428-913F-C37AE82CDB24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E443C2D3-4AA6-4092-B6C6-9D13FD03673A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E443C2D3-4AA6-4092-B6C6-9D13FD03673A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E443C2D3-4AA6-4092-B6C6-9D13FD03673A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E443C2D3-4AA6-4092-B6C6-9D13FD03673A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
