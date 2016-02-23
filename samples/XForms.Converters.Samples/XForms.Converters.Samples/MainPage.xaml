@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:XForms.Converters.Samples;assembly=XForms.Converters.Samples"
+	xmlns:converters="clr-namespace:XForms.Converters;assembly=XForms.Converters"
+	x:Class="XForms.Converters.Samples.MainPage">
+	<ContentPage.BindingContext>
+		<local:MainPageViewModel />
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<!-- Converters -->
+			<converters:IsEmptyConverter x:Key="IsEmpty" />
+			<converters:IsEmptyCollectionConverter x:Key="IsEmptyCollection" />
+			<converters:InverseBoolConverter x:Key="InverseBool" />
+			
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<Grid Padding="0,50,0,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<StackLayout Grid.Row="0">
+			<StackLayout>
+				<Entry x:Name="entry" Text="{Binding ItemName, Mode=TwoWay}" Placeholder="Item name..." IsEnabled="{Binding IsEnabled}" />
+				<!-- IsEmptyConverter -->
+				<Label Text="Empty name!" IsVisible="{Binding ItemName, Converter={StaticResource IsEmpty}}" />
+				<Button Text="Save" Command="{Binding AddItemCommand}" IsEnabled="{Binding IsEnabled}">
+					<Button.Triggers>
+						<DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference entry}, Path=Text.Length}" Value="0">
+							<Setter Property="IsVisible" Value="False" />
+						</DataTrigger>
+					</Button.Triggers>
+				</Button>
+			</StackLayout>
+			
+			<StackLayout Orientation="Horizontal">
+				<Label>Disable controls</Label>
+				<!-- InverseBoolConverter -->
+				<Switch IsToggled="{Binding IsEnabled, Mode=TwoWay, Converter={StaticResource InverseBool}}" />
+			</StackLayout>
+		</StackLayout>
+
+		<!-- IsEmptyCollectionConverter -->
+		<Label Grid.Row="1" IsVisible="{Binding Items, Converter={StaticResource IsEmptyCollection}}" Text="No items =(" />
+		<ListView Grid.Row="1" ItemsSource="{Binding Items}" />
+	</Grid>
+	
+	
+</ContentPage>
