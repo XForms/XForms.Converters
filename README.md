@@ -15,7 +15,7 @@ xmlns:converters="clr-namespace:XForms.Converters;assembly=XForms.Converters"
 ```
 
 Add converters to resources:
-```
+```xml
 <ResourceDictionary>
 
 	<!-- Converters -->
@@ -26,8 +26,8 @@ Add converters to resources:
 ```
 
 Use on page:
-```
-IsVisible="{Binding IsEnabled, Converter={StaticResource InverseBool}}"
+```xml
+<Label IsVisible="{Binding IsEnabled, Converter={StaticResource InverseBool}}" Text="XForms" />
 ```
 
 ---
