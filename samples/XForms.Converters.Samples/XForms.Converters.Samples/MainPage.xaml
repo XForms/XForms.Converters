@@ -16,6 +16,11 @@
 			<converters:IsEmptyCollectionConverter x:Key="IsEmptyCollection" />
 			<converters:InverseBoolConverter x:Key="InverseBool" />
 			
+			<converters:ValueConverterGroup x:Key="IsEmptyInverse">
+				<converters:IsEmptyConverter />
+				<converters:InverseBoolConverter />
+			</converters:ValueConverterGroup>
+			
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -30,13 +35,10 @@
 				<Entry x:Name="entry" Text="{Binding ItemName, Mode=TwoWay}" Placeholder="Item name..." IsEnabled="{Binding IsEnabled}" />
 				<!-- IsEmptyConverter -->
 				<Label Text="Empty name!" IsVisible="{Binding ItemName, Converter={StaticResource IsEmpty}}" />
-				<Button Text="Save" Command="{Binding AddItemCommand}" IsEnabled="{Binding IsEnabled}">
-					<Button.Triggers>
-						<DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference entry}, Path=Text.Length}" Value="0">
-							<Setter Property="IsVisible" Value="False" />
-						</DataTrigger>
-					</Button.Triggers>
-				</Button>
+				<Button Text="Save"
+						Command="{Binding AddItemCommand}"
+						IsEnabled="{Binding IsEnabled}"
+						IsVisible="{Binding ItemName, Converter={StaticResource IsEmptyInverse}}" />
 			</StackLayout>
 			
 			<StackLayout Orientation="Horizontal">
