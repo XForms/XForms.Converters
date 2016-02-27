@@ -30,6 +30,17 @@ Use on page:
 <Label IsVisible="{Binding IsEnabled, Converter={StaticResource InverseBool}}" Text="XForms" />
 ```
 
+
+## Additional features
+
+Multiple converters with `ValueConverterGroup`:
+```xml
+<converters:ValueConverterGroup x:Key="IsEmptyInverse">
+	<converters:IsEmptyConverter />
+	<converters:InverseBoolConverter />
+</converters:ValueConverterGroup>
+```
+
 ---
 
 &copy; 2016 Yauheni Pakala | MIT
